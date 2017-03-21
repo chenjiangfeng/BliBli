@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/g1">
+
     <item
         android:id="@+id/home"
         android:title="钱包"
@@ -9,37 +13,45 @@
     <item
         android:id="@+id/member"
         android:title="我的大会员"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_nav_vip">
 
     </item>
     <item
         android:id="@+id/integral"
         android:title="会员积分"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_nav_point">
 
     </item>
     <item
+        android:id="@+id/cache"
+        android:title="离线缓存"
+        android:icon="@drawable/ic_download_grey_24dp">
+    </item>
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/g2">
+    <item
         android:id="@+id/lafter"
         android:title="稍后再看"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_view_later_24dp">
 
     </item>
     <item
         android:id="@+id/collection"
         android:title="我的收藏"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_star_black_24dp">
 
     </item>
     <item
         android:id="@+id/history"
         android:title="历史记录"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_history_black_24dp">
 
     </item>
     <item
         android:id="@+id/follow"
         android:title="我的关注"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_people_black_24dp">
 
     </item>
     <item
@@ -48,18 +60,21 @@
         android:icon="@drawable/ic_home_black_24dp">
 
     </item>
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/g3">
     <item
         android:id="@+id/theme"
         android:title="主题选择"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_color_lens_black_24dp">
 
     </item>
     <item
         android:id="@+id/set"
         android:title="设置与帮助"
-        android:icon="@drawable/ic_home_black_24dp">
+        android:icon="@drawable/ic_settings_black_24dp">
 
     </item>
-
+    </group>
 
 </menu>

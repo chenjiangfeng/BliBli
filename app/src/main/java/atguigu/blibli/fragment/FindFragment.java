@@ -1,9 +1,9 @@
 package atguigu.blibli.fragment;
 
-import android.graphics.Color;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+
+import atguigu.blibli.R;
 
 /**
  * Created by 陈江峰 on 2017/3/21.
@@ -14,10 +14,8 @@ public class FindFragment extends  BaseFragment {
 
     @Override
     public View initView() {
-        textView = new TextView( mContext);
-        textView.setTextColor(Color.RED);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextSize(25);
+       View view = View.inflate(mContext, R.layout.fragment_find,null);
+
         return textView;
     }
 

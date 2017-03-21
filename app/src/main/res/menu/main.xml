@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="钱包"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/member"
+        android:title="我的大会员"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/integral"
+        android:title="会员积分"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/lafter"
+        android:title="稍后再看"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/collection"
+        android:title="我的收藏"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/history"
+        android:title="历史记录"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/follow"
+        android:title="我的关注"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/wallet"
+        android:title="B币钱包"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/theme"
+        android:title="主题选择"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+    <item
+        android:id="@+id/set"
+        android:title="设置与帮助"
+        android:icon="@drawable/ic_home_black_24dp">
+
+    </item>
+
+
+</menu>

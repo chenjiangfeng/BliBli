@@ -42,6 +42,7 @@ public class LiveFragment extends BaseFragment {
 
     private void getDataFromNet() {
         OkHttpUtils.get()
+                .tag(this)
                 .url(Contants.LIVE_URL)
                 .build()
                 .execute(new StringCallback() {
@@ -61,13 +62,17 @@ public class LiveFragment extends BaseFragment {
 
     private void processData(String json) {
         if(!TextUtils.isEmpty(json)) {
+
             LiveBean bean = JSON.parseObject(json, LiveBean.class);
             LiveBean.DataBean data = bean.getData();
+           if(data!=null) {
+               //设置适配器
+               LiveAdapter adapter = new LiveAdapter(mContext,data);
 
-            //设置适配器
-            LiveAdapter adapter = new LiveAdapter(mContext,data);
+               fragmentLive.setAdapter(adapter);
+           }
 
-            fragmentLive.setAdapter(adapter);
+
             //布局管理器
 //            GridLayoutManager manager = new GridLayoutManager(mContext, 1);
 //            fragmentLive.setLayoutManager(manager);
@@ -76,11 +81,10 @@ public class LiveFragment extends BaseFragment {
             fragmentLive.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
         }
     }
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+        OkHttpUtils.delete().tag(this);
     }
 }

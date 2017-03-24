@@ -26,5 +26,22 @@
         <attr name="border_color" format="color" />
         <attr name="border_overlay" format="boolean" />
     </declare-styleable>
+    <style name="SubTabLayout" parent="Widget.Design.TabLayout">
+
+        <!--<item name="tabMaxWidth">40dp</item>-->
+        <!--<item name="tabMinWidth">40dp</item>-->
+
+        <item name="tabIndicatorColor">#FB7299</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabTextAppearance">@style/SubTabTextAppearance</item>
+        <item name="tabSelectedTextColor">#FB7299</item>
+
+    </style>
+
+    <style name="SubTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="textAllCaps">false</item>
+    </style>
 
 </resources>

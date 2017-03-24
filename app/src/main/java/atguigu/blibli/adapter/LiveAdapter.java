@@ -3,10 +3,14 @@ package atguigu.blibli.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
@@ -21,6 +25,9 @@ import atguigu.blibli.R;
 import atguigu.blibli.activity.WebViewActivity;
 import atguigu.blibli.bean.LiveBean;
 import atguigu.blibli.bean.WebViewBean;
+import atguigu.blibli.utils.MyGridView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Created by 陈江峰 on 2017/3/21.
@@ -30,12 +37,16 @@ public class LiveAdapter extends RecyclerView.Adapter {
     private final LiveBean.DataBean datas;
     private final Context mContext;
 
+
+
     private LayoutInflater inflater;
-    public static final String LINK ="LINK";
+    public static final String LINK = "LINK";
 
     public static final int BANNER = 0;
 
+    public static final int DRAWAER = 1;
 
+    public static final int LIVE = 2;
     /**
      * 当前的缓存
      */
@@ -52,15 +63,25 @@ public class LiveAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         if (position == BANNER) {
             currentType = BANNER;
+        } else if (position == DRAWAER) {
+            currentType = DRAWAER;
         }
-        return super.getItemViewType(position);
+//        else if (position == LIVE) {
+//            currentType = LIVE;
+//        }
+        return currentType;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == BANNER) {
             return new BannerViewHolder(mContext, inflater.inflate(R.layout.banner_viewpager, null));
+        } else if (viewType == DRAWAER) {
+            return new PartitionsViewHolder(mContext, inflater.inflate(R.layout.partitions_viewpager, null));
         }
+//        else if (viewType == LIVE) {
+//            return new LiveViewHolder(mContext, inflater.inflate(R.layout.live_viewpager, null));
+//        }
         return null;
     }
 
@@ -69,13 +90,21 @@ public class LiveAdapter extends RecyclerView.Adapter {
         if (getItemViewType(position) == BANNER) {
             BannerViewHolder viewHolder = (BannerViewHolder) holder;
             viewHolder.setData(datas.getBanner());
+        } else if (getItemViewType(position) == DRAWAER) {
+            PartitionsViewHolder viewHolder = (PartitionsViewHolder) holder;
+            viewHolder.setData(datas.getPartitions());
         }
+//        else if(getItemViewType(position)==LIVE) {
+//            LiveViewHolder viewHolder = (LiveViewHolder) holder;
+//            viewHolder.setData(datas.getPartitions());
+//        }
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 10;
     }
+
 
     private class BannerViewHolder extends RecyclerView.ViewHolder {
         private final Context context;
@@ -112,20 +141,114 @@ public class LiveAdapter extends RecyclerView.Adapter {
                 @Override
                 public void OnBannerClick(int position) {
 
-                    for (int i = 0;i<beanbanner.size();i++){
+                    for (int i = 0; i < beanbanner.size(); i++) {
                         link = beanbanner.get(i).getLink();
-                         title = beanbanner.get(i).getTitle();
+                        title = beanbanner.get(i).getTitle();
 
                     }
                     WebViewBean bean = new WebViewBean();
                     bean.setLink(link);
                     bean.setTitle(title);
-                    Intent intent = new Intent(mContext,WebViewActivity.class);
-                    intent.putExtra(LINK,bean);
+                    Intent intent = new Intent(mContext, WebViewActivity.class);
+                    intent.putExtra(LINK, bean);
                     mContext.startActivity(intent);
                 }
             });
         }
     }
 
+
+    class PartitionsViewHolder extends RecyclerView.ViewHolder {
+
+        private final Context context;
+        @InjectView(R.id.iv_imageview)
+        ImageView ivImageview;
+        @InjectView(R.id.painting)
+        TextView painting;
+        @InjectView(R.id.tv_title)
+        TextView tvTitle;
+        @InjectView(R.id.iv_right)
+        ImageView ivRight;
+        @InjectView(R.id.gv_view)
+        MyGridView gvView;
+        @InjectView(R.id.bt_more)
+        Button btMore;
+        @InjectView(R.id.tv_refresh)
+        TextView tvRefresh;
+//        private ImageView iv_imageview;
+//        private TextView painting;
+//        private TextView tv_title;
+//        private ImageView iv_right;
+//        private GridView gv_view;
+//        private Button bt_more;
+//        private TextView tv_refresh;
+
+        public PartitionsViewHolder(Context mContext, View inflate) {
+            super(inflate);
+            this.context = mContext;
+            ButterKnife.inject(this, inflate);
+//            iv_imageview = (ImageView) inflate.findViewById(R.id.iv_imageview);
+//            painting = (TextView) inflate.findViewById(R.id.painting);
+//            tv_title = (TextView) inflate.findViewById(R.id.tv_title);
+//            iv_right = (ImageView) inflate.findViewById(R.id.iv_right);
+//            gv_view = (GridView) inflate.findViewById(R.id.gv_view);
+//            bt_more = (Button) inflate.findViewById(R.id.bt_more);
+//            tv_refresh = (TextView) inflate.findViewById(R.id.tv_refresh);
+        }
+
+        public void setData(List<LiveBean.DataBean.PartitionsBean> partitions) {
+            String src = partitions.get(getLayoutPosition()-1).getPartition().getSub_icon().getSrc();
+            String name = partitions.get(getLayoutPosition()-1).getPartition().getName();
+            Glide.with(context).load(src)
+                    .into(ivImageview);
+            painting.setText(name);
+
+            int online = partitions.get(getLayoutPosition()-1).getPartition().getCount();
+            Spanned refresh = Html.fromHtml("<font color=#Fb7299><b>online</b></font>" + "个直播");
+            Spanned text = Html.fromHtml("当前" + "<font color=#Fb7299><b>online</b></font>" + "个直播");
+            tvTitle.setText(text);
+
+
+            DrawaerAdapter adapter = new DrawaerAdapter(context, partitions.get(getLayoutPosition()-1).getLives());
+            gvView.setAdapter(adapter);
+        }
+    }
+
+//    class LiveViewHolder extends RecyclerView.ViewHolder {
+//        private final Context context;
+//        @InjectView(R.id.iv_live)
+//        ImageView ivLive;
+//        @InjectView(R.id.tv_live)
+//        TextView tvLive;
+//        @InjectView(R.id.tv_right)
+//        TextView tvRight;
+//        @InjectView(R.id.gv_view)
+//        MyGridView gvView;
+//        @InjectView(R.id.tv_live_right)
+//        TextView tvLiveRight;
+//        @InjectView(R.id.iv_live_refresh)
+//        ImageView ivLiveRefresh;
+//        public LiveViewHolder(Context mContext, View inflate) {
+//            super(inflate);
+//            this.context =mContext;
+//            ButterKnife.inject(this,inflate);
+//        }
+//
+//        public void setData(List<LiveBean.DataBean.PartitionsBean> partitions) {
+//            String src = partitions.get(1).getPartition().getSub_icon().getSrc();
+//            Glide.with(context).load(src).into(ivLive);
+//            LiveBean.DataBean.PartitionsBean bean = partitions.get(1);
+//            int count = bean.getPartition().getCount();
+//
+//            Spanned text = Html.fromHtml("当前" + "<font color=#Fb7299><b>count</b></font>" + "个直播");
+//            tvRight.setText(text);
+//            int online = partitions.get(1).getLives().get(0).getOnline();
+//            Spanned refresh = Html.fromHtml("<font color=#Fb7299><b>online</b></font>" + "条新动态,点击刷新");
+//
+//            tvLiveRight.setText(refresh);
+//            List<LiveBean.DataBean.PartitionsBean.LivesBean> lives = partitions.get(1).getLives();
+//            LifeAdapter adapter = new LifeAdapter(context,lives);
+//            gvView.setAdapter(adapter);
+//        }
+//    }
 }

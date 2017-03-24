@@ -13,4 +13,55 @@
         app:indicator_width="5dp"
         app:image_scale_type="fit_xy"
         app:is_auto_play="true" />
+    <LinearLayout
+        android:background="#ffff"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/er_anchor"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/live_home_follow_anchor"
+            android:text="关注"/>
+
+        <TextView
+            android:id="@+id/er_center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/live_home_live_center"
+            android:text="中心"/>
+
+        <TextView
+            android:id="@+id/er_video"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/live_home_clip_video"
+            android:text="小视频"/>
+
+        <TextView
+            android:id="@+id/er_search"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/live_home_search_room"
+            android:text="搜索"/>
+
+        <TextView
+            android:id="@+id/er_category"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/live_home_all_category"
+            android:text="分类"/>
+    </LinearLayout>
 </LinearLayout>

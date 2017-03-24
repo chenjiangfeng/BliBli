@@ -1,4 +1,4 @@
-package atguigu.blibli;
+package atguigu.blibli.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import atguigu.blibli.R;
 import atguigu.blibli.adapter.MainAdapter;
 import atguigu.blibli.fragment.BaseFragment;
 import atguigu.blibli.fragment.FindFragment;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
         iv = (ImageView) findViewById(R.id.iv_select);
         dlMain = (DrawerLayout) findViewById(R.id.dl_main);
         tabLayout = (TabLayout) findViewById(tablayout);
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         //设置适配器
 
         adapter = new MainAdapter(getSupportFragmentManager(), fragments);
+
+        viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);

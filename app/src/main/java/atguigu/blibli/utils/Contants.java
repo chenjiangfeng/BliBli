@@ -34,4 +34,7 @@ public class Contants {
 
         //全区排行榜
     public static String REGION_URL ="http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa";
+        //全区 排行榜的番据
+    public static String REGION_URLONE="http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa80913d27e41ab8049";
+
 }

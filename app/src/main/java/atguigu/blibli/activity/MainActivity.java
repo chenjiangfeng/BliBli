@@ -1,5 +1,6 @@
 package atguigu.blibli.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -46,7 +47,18 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(tablayout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         navigationView = (NavigationView) findViewById(R.id.navigation_heade);
+
         View headerView = navigationView.getHeaderView(0);
+
+        ImageView imageView = (ImageView) headerView.findViewById(R.id.iv_tatle);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //头部点击事件
         headerView.setOnClickListener(new View.OnClickListener() {

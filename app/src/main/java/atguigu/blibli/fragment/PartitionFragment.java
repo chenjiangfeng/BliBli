@@ -32,6 +32,7 @@ public class PartitionFragment extends BaseFragment {
     @InjectView(R.id.sw_view)
     SwipeRefreshLayout swView;
     private List<BranchBean.DataBean> data;
+    private BranchAdapter adapter;
 
     @Override
     public View initView() {
@@ -110,8 +111,11 @@ public class PartitionFragment extends BaseFragment {
         if(data!=null&&data.size()>0) {
             swView.setRefreshing(false);
             //设置适配器
+                if(adapter==null) {
 
-            BranchAdapter adapter = new BranchAdapter(mContext,data,dataTwo);
+                    adapter = new BranchAdapter(mContext,data,dataTwo);
+
+                }
 
             adapter.notifyDataSetChanged();
             rvView.setAdapter(adapter);

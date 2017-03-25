@@ -42,7 +42,8 @@ public class OriginalFragment extends BaseFragment {
 
     private void getDataFromeNet() {
 
-        OkHttpUtils.get().url(Contants.ORIGINAL_URL)
+        OkHttpUtils.get()
+                .tag(this).url(Contants.ORIGINAL_URL)
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -70,6 +71,7 @@ public class OriginalFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
+        OkHttpUtils.delete().tag(this);
         super.onDestroyView();
         ButterKnife.reset(this);
     }

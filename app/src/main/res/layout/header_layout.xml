@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+
+    android:layout_height="200dp"
     android:background="@drawable/ic_vip_header_bg"
-    android:layout_height="200dp    "
     android:orientation="vertical">
+
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/iv_left"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
-        android:src="@drawable/ic_switch_night"/>
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_switch_night" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_tatle"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp"
+        android:text="点击头像登陆"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
 
     <ImageView
         android:id="@+id/iv_tatle"
-        android:layout_marginLeft="10dp"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/bili_default_avatar" />
-    <TextView
-        android:layout_below="@id/iv_tatle"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
-        android:textSize="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:text="点击头像登陆"/>
 </RelativeLayout>

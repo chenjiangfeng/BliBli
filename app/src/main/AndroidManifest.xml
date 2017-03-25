@@ -24,7 +24,8 @@
         <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".activity.TalkActivity" />
         <activity android:name=".activity.OriginalActivity" />
-        <activity android:name=".activity.RegionActivity"></activity>
+        <activity android:name=".activity.RegionActivity" />
+        <activity android:name=".activity.LoginActivity"></activity>
     </application>
 
 </manifest>

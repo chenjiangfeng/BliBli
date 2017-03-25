@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_web_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="atguigu.blibli.activity.WebViewActivity">
+    <include layout="@layout/head"></include>
+
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <!--标题栏-->
-    <LinearLayout
+    <!--<LinearLayout
 
         android:background="#fb7299"
         android:id="@+id/ll_shangmian"
@@ -48,7 +55,7 @@
             android:background="@drawable/ic_promo_index_more_v2" />
 
     </LinearLayout>
-    <!--分割线-->
+    &lt;!&ndash;分割线&ndash;&gt;
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -71,6 +78,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
-    </FrameLayout>
+    </FrameLayout>-->
 
-</RelativeLayout>
+
+
+
+   <!-- <FrameLayout
+        android:id="@+id/fl_dixia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+
+
+<!--
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </FrameLayout>-->
+</LinearLayout>

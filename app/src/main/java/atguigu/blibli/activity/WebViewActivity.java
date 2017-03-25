@@ -77,7 +77,6 @@ public class WebViewActivity extends AppCompatActivity {
         toolbar.setTitle(TextUtils.isEmpty(title) ? "详情" : title);
         setSupportActionBar(toolbar);
 
-
 //        tvTitle.setText(title);
         WebSettings setting = webview.getSettings();
         //设置java调用js

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import atguigu.blibli.activity.WebViewActivity;
 import atguigu.blibli.bean.LiveBean;
 import atguigu.blibli.bean.WebViewBean;
 import atguigu.blibli.utils.MyGridView;
+import atguigu.blibli.view.DanmkuVideoActivity;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -39,6 +41,7 @@ public class LiveAdapter extends RecyclerView.Adapter {
 
     private LayoutInflater inflater;
     public static final String LINK = "LINK";
+    public static final String VIEW = "VIEW";
 
     public static final int BANNER = 0;
 
@@ -173,28 +176,14 @@ public class LiveAdapter extends RecyclerView.Adapter {
         Button btMore;
         @InjectView(R.id.tv_refresh)
         TextView tvRefresh;
-//        private ImageView iv_imageview;
-//        private TextView painting;
-//        private TextView tv_title;
-//        private ImageView iv_right;
-//        private GridView gv_view;
-//        private Button bt_more;
-//        private TextView tv_refresh;
 
         public PartitionsViewHolder(Context mContext, View inflate) {
             super(inflate);
             this.context = mContext;
             ButterKnife.inject(this, inflate);
-//            iv_imageview = (ImageView) inflate.findViewById(R.id.iv_imageview);
-//            painting = (TextView) inflate.findViewById(R.id.painting);
-//            tv_title = (TextView) inflate.findViewById(R.id.tv_title);
-//            iv_right = (ImageView) inflate.findViewById(R.id.iv_right);
-//            gv_view = (GridView) inflate.findViewById(R.id.gv_view);
-//            bt_more = (Button) inflate.findViewById(R.id.bt_more);
-//            tv_refresh = (TextView) inflate.findViewById(R.id.tv_refresh);
         }
 
-        public void setData(List<LiveBean.DataBean.PartitionsBean> partitions) {
+        public void setData(final List<LiveBean.DataBean.PartitionsBean> partitions) {
             String src = partitions.get(getLayoutPosition()-1).getPartition().getSub_icon().getSrc();
             String name = partitions.get(getLayoutPosition()-1).getPartition().getName();
             Glide.with(context).load(src)
@@ -203,14 +192,24 @@ public class LiveAdapter extends RecyclerView.Adapter {
 
             int online = partitions.get(getLayoutPosition()-1).getPartition().getCount();
 
-//            Spanned refresh = Html.fromHtml("<font color=#Fb7299><b>online</b></font>" + "个直播");
-//            Spanned text = Html.fromHtml("当前" + "<font color=#Fb7299><b>online</b></font>" + "个直播");
-
             tvTitle.setText(online+"");
-
-
             DrawaerAdapter adapter = new DrawaerAdapter(context, partitions.get(getLayoutPosition()-1).getLives());
             gvView.setAdapter(adapter);
+            //设置监听
+
+            gvView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    String playurl = datas.getPartitions().get(position).getLives().get(position).getPlayurl();
+                    //String playurl = partitions.get(getLayoutPosition()-1).getLives().get(position-1).getPlayurl();
+                    Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
+                   // intent.putExtra(VIEW,playurl);
+                    mContext.startActivity(intent);
+
+
+                }
+            });
         }
     }
 

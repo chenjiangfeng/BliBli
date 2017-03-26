@@ -65,7 +65,7 @@ public class WebViewActivity extends AppCompatActivity {
         webViewBean = (WebViewBean) getIntent().getSerializableExtra(LiveAdapter.LINK);
         title = webViewBean.getTitle();
         link = webViewBean.getLink();
-
+        setSupportActionBar(toolbar);
 
         //设置totel的返回箭头
         ActionBar supportActionBar = getSupportActionBar();
@@ -75,7 +75,7 @@ public class WebViewActivity extends AppCompatActivity {
         }
         //设置标题
         toolbar.setTitle(TextUtils.isEmpty(title) ? "详情" : title);
-        setSupportActionBar(toolbar);
+
 
 //        tvTitle.setText(title);
         WebSettings setting = webview.getSettings();

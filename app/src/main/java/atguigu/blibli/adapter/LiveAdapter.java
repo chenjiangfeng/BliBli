@@ -3,8 +3,6 @@ package atguigu.blibli.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -204,9 +202,11 @@ public class LiveAdapter extends RecyclerView.Adapter {
             painting.setText(name);
 
             int online = partitions.get(getLayoutPosition()-1).getPartition().getCount();
-            Spanned refresh = Html.fromHtml("<font color=#Fb7299><b>online</b></font>" + "个直播");
-            Spanned text = Html.fromHtml("当前" + "<font color=#Fb7299><b>online</b></font>" + "个直播");
-            tvTitle.setText(text);
+
+//            Spanned refresh = Html.fromHtml("<font color=#Fb7299><b>online</b></font>" + "个直播");
+//            Spanned text = Html.fromHtml("当前" + "<font color=#Fb7299><b>online</b></font>" + "个直播");
+
+            tvTitle.setText(online+"");
 
 
             DrawaerAdapter adapter = new DrawaerAdapter(context, partitions.get(getLayoutPosition()-1).getLives());

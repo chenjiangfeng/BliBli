@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ import atguigu.blibli.activity.WebViewActivity;
 import atguigu.blibli.bean.LiveBean;
 import atguigu.blibli.bean.WebViewBean;
 import atguigu.blibli.utils.MyGridView;
-import atguigu.blibli.view.DanmkuVideoActivity;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -93,7 +91,7 @@ public class LiveAdapter extends RecyclerView.Adapter {
             viewHolder.setData(datas.getBanner());
         } else if (getItemViewType(position) == DRAWAER) {
             PartitionsViewHolder viewHolder = (PartitionsViewHolder) holder;
-            viewHolder.setData(datas.getPartitions());
+            viewHolder.setData(datas.getPartitions().get(position-1));
         }
 //        else if(getItemViewType(position)==LIVE) {
 //            LiveViewHolder viewHolder = (LiveViewHolder) holder;
@@ -144,9 +142,11 @@ public class LiveAdapter extends RecyclerView.Adapter {
 
                     for (int i = 0; i < beanbanner.size(); i++) {
                         link = beanbanner.get(i).getLink();
+
                         title = beanbanner.get(i).getTitle();
 
                     }
+
                     WebViewBean bean = new WebViewBean();
                     bean.setLink(link);
                     bean.setTitle(title);
@@ -183,33 +183,37 @@ public class LiveAdapter extends RecyclerView.Adapter {
             ButterKnife.inject(this, inflate);
         }
 
-        public void setData(final List<LiveBean.DataBean.PartitionsBean> partitions) {
-            String src = partitions.get(getLayoutPosition()-1).getPartition().getSub_icon().getSrc();
-            String name = partitions.get(getLayoutPosition()-1).getPartition().getName();
+        public void setData(final LiveBean.DataBean.PartitionsBean partitionsBean) {
+            String src = partitionsBean.getPartition().getSub_icon().getSrc();
+            String name = partitionsBean.getPartition().getName();
             Glide.with(context).load(src)
                     .into(ivImageview);
             painting.setText(name);
 
-            int online = partitions.get(getLayoutPosition()-1).getPartition().getCount();
+            int online = partitionsBean.getPartition().getCount();
 
             tvTitle.setText(online+"");
-            DrawaerAdapter adapter = new DrawaerAdapter(context, partitions.get(getLayoutPosition()-1).getLives());
+            DrawaerAdapter adapter = new DrawaerAdapter(context, partitionsBean.getLives());
             gvView.setAdapter(adapter);
             //设置监听
 
-            gvView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    String playurl = datas.getPartitions().get(position).getLives().get(position).getPlayurl();
-                    //String playurl = partitions.get(getLayoutPosition()-1).getLives().get(position-1).getPlayurl();
-                    Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
-                   // intent.putExtra(VIEW,playurl);
-                    mContext.startActivity(intent);
-
-
-                }
-            });
+//            gvView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+//
+////                    String playurl = partitions.get(getLayoutPosition()-1).getLives().get(position).getPlayurl();
+//
+//                    Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
+//
+//
+//                    String playurl = partitionsBean.getLives().get(position).getPlayurl();
+//                     intent.putExtra(VIEW,playurl);
+//
+//                    mContext.startActivity(intent);
+//
+//                }
+//            });
         }
     }
 

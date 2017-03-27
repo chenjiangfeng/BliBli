@@ -37,4 +37,7 @@ public class Contants {
         //全区 排行榜的番据
     public static String REGION_URLONE="http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa80913d27e41ab8049";
 
+    public static String SHOPPING_URL ="http://bmall.bilibili.com/apiSecond/public/getModelData.do?mark_code=7f7d1ac0796211e6ab5352223301d29a";
+
+    public static String SHOPPINGALL_URL = "http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
 }

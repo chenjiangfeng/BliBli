@@ -24,6 +24,7 @@ import java.util.List;
 import atguigu.blibli.R;
 import atguigu.blibli.activity.OriginalActivity;
 import atguigu.blibli.activity.RegionActivity;
+import atguigu.blibli.activity.ShoppingActivity;
 import atguigu.blibli.activity.TalkActivity;
 import atguigu.blibli.bean.WaterBean;
 import atguigu.blibli.utils.Contants;
@@ -124,8 +125,17 @@ public class FindFragment extends BaseFragment {
                     tv.setText(list.get(position).getKeyword());
                     tv.setTextColor(colors[position % colors.length]);
                     return tv;
+
+
                 }
             });
+           idFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+               @Override
+               public boolean onTagClick(View view, int position, FlowLayout parent) {
+                   Toast.makeText(mContext, ""+position, Toast.LENGTH_SHORT).show();
+                   return true;
+               }
+           });
 
         }
     }
@@ -149,6 +159,10 @@ public class FindFragment extends BaseFragment {
                 searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
                     @Override
                     public void OnSearchClick(String keyword) {
+
+//
+//                    Intent intent = new Intent(mContext,SearchActivity.class);
+//                                mContext.startActivity(intent);
                         Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -212,6 +226,8 @@ public class FindFragment extends BaseFragment {
             case R.id.game:
                 break;
             case R.id.around:
+                intent = new Intent(mContext,ShoppingActivity.class);
+                mContext.startActivity(intent);
                 break;
         }
     }

@@ -1,6 +1,7 @@
 package atguigu.blibli.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import atguigu.blibli.R;
 import atguigu.blibli.bean.LiveBean;
+import atguigu.blibli.view.DanmkuVideoActivity;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -21,6 +23,7 @@ import butterknife.InjectView;
  */
 
 public class DrawaerAdapter extends BaseAdapter {
+    public static final String VIEDONE = "VIEDONE";
     private final Context mContext;
     private final List<LiveBean.DataBean.PartitionsBean.LivesBean> datas;
 //    private final LiveBean.DataBean.PartitionsBean datas;
@@ -51,7 +54,7 @@ this.datas = lives;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
 
         if (convertView == null) {
@@ -69,6 +72,15 @@ this.datas = lives;
         viewHolder.tvlDescribe.setText(owner.getTitle());
         viewHolder.tvName.setText(owner.getOwner().getName());
         viewHolder.tvNor.setText(owner.getOnline()+"万");
+        viewHolder.ivCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
+                String playurl = datas.get(position).getPlayurl();
+                intent.putExtra("VIEDONE",playurl);
+                mContext.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

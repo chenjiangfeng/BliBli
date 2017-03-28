@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_sort"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="默认排序"
+        android:textColor="#44000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_long"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="全部时长"
+        android:textColor="#44000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_partition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="全部分区"
+        android:textColor="#44000000"
+        android:textSize="16sp" />
+</LinearLayout>

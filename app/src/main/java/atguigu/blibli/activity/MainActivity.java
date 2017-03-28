@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,9 @@ import atguigu.blibli.fragment.LiveFragment;
 import atguigu.blibli.fragment.PartitionFragment;
 import atguigu.blibli.fragment.RecommendFragment;
 import atguigu.blibli.fragment.RunFragment;
+import atguigu.blibli.utils.Contants;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static atguigu.blibli.R.id.tablayout;
 
@@ -36,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private NavigationView navigationView;
     private ImageView iv;
+    private ImageView iv_search;
+    public static final String URL="URL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
+        ButterKnife.inject(this);
+        iv_search = (ImageView) findViewById(R.id.iv_search);
         iv = (ImageView) findViewById(R.id.iv_select);
         dlMain = (DrawerLayout) findViewById(R.id.dl_main);
         tabLayout = (TabLayout) findViewById(tablayout);
@@ -55,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -138,5 +147,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.iv_search)
+    public void onClick() {
+        SearchFragment searchFragment = SearchFragment.newInstance();
+        searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+            @Override
+            public void OnSearchClick(String keyword) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("URL", Contants.SEACHER_TOP_URL+keyword+Contants.SEACHER_BUTTON_URL);
+                intent.putExtra("KEYWORD",keyword);
+
+
+                startActivity(intent);
+
+            }
+        });
+        searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
     }
 }

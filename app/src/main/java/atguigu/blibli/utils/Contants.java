@@ -23,21 +23,27 @@ public class Contants {
     //追番
 
     public static String RUN_URL = "http://bangumi.bilibili.com/api/app_index_page_v4?build=3940&device=phone&mobi_app=iphone&platform=ios";
-        //追番的Banner
-    public static String BANNER_URL ="http://bangumi.bilibili.com/api/bangumi_recommend?access_key=f5bd4e793b82fba5aaf5b91fb549910a&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3470&cursor=0&device=phone&mobi_app=iphone&pagesize=10&platform=ios&sign=56329a5709c401d4d7c0237f64f7943f&ts=1469613558";
-        //分区的头布局
+    //追番的Banner
+    public static String BANNER_URL = "http://bangumi.bilibili.com/api/bangumi_recommend?access_key=f5bd4e793b82fba5aaf5b91fb549910a&actionKey=appkey&appkey=27eb53fc9058f8c3&build=3470&cursor=0&device=phone&mobi_app=iphone&pagesize=10&platform=ios&sign=56329a5709c401d4d7c0237f64f7943f&ts=1469613558";
+    //分区的头布局
 //    public static String BRANCH_URL = "http://live.bilibili.com/AppIndex/areas?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=xxhdpi&ts=1490016232000&sign=678fafda8c1c1e2db3d8224c2b31044f";
     //分区的头布局正确
-    public static String BRANCH_URL ="http://app.bilibili.com/x/v2/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=";
+    public static String BRANCH_URL = "http://app.bilibili.com/x/v2/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=";
     //分区的下边的数据
-    public static String PARTITION_URL= "http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
+    public static String PARTITION_URL = "http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
 
-        //全区排行榜
-    public static String REGION_URL ="http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa";
-        //全区 排行榜的番据
-    public static String REGION_URLONE="http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa80913d27e41ab8049";
+    //全区排行榜
+    public static String REGION_URL = "http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa";
+    //全区 排行榜的番据
+    public static String REGION_URLONE = "http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=13&ts=1490017056000&sign=6825377c5a626fa80913d27e41ab8049";
 
-    public static String SHOPPING_URL ="http://bmall.bilibili.com/apiSecond/public/getModelData.do?mark_code=7f7d1ac0796211e6ab5352223301d29a";
+    public static String SHOPPING_URL = "http://bmall.bilibili.com/apiSecond/public/getModelData.do?mark_code=7f7d1ac0796211e6ab5352223301d29a";
 
     public static String SHOPPINGALL_URL = "http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
+
+    //搜素的头
+    public static String SEACHER_TOP_URL = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=";
+
+    //搜索的尾
+    public static String SEACHER_BUTTON_URL = "&mobi_app=android&platform=android&pn=1&ps=20";
 }

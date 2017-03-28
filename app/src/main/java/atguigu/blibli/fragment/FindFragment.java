@@ -132,7 +132,6 @@ public class FindFragment extends BaseFragment {
            idFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
                @Override
                public boolean onTagClick(View view, int position, FlowLayout parent) {
-                   Toast.makeText(mContext, ""+position, Toast.LENGTH_SHORT).show();
                    return true;
                }
            });

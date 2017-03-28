@@ -117,8 +117,11 @@ public class SearchActivity extends AppCompatActivity {
 //            String name = nav.get(i).getName();
 //            bing.add(name);
         }
+
         adpter = new SeacherAdpter(getSupportFragmentManager(), lists,bing);
+
         viewPager.setAdapter(adpter);
+
         tlTop.setupWithViewPager(viewPager);
         tlTop.setTabMode(TabLayout.MODE_SCROLLABLE);
 

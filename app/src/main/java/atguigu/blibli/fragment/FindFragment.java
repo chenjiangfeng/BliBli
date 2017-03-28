@@ -3,6 +3,7 @@ package atguigu.blibli.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,7 +33,10 @@ import atguigu.blibli.utils.DensityUtil;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import erweima.activity.CaptureActivity;
 import okhttp3.Call;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by 陈江峰 on 2017/3/21.
@@ -169,6 +173,8 @@ public class FindFragment extends BaseFragment {
 
                 break;
             case R.id.iv_scan:
+                 intent = new Intent(mContext, CaptureActivity.class);
+                startActivityForResult(intent,0);
                 break;
             case R.id.id_flowlayout:
                 break;
@@ -231,5 +237,16 @@ public class FindFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode ==RESULT_OK&&requestCode==0) {
+            Bundle mBundle = data.getExtras();
+//            if(ValidateUtils.isNotNullobj(mBundle)) {
+                String Scanrelut = mBundle.getString("result");
+                Toast.makeText(mContext, "扫描二维码的结果是"+Scanrelut, Toast.LENGTH_SHORT).show();
+//            }
 
+        }
+    }
 }

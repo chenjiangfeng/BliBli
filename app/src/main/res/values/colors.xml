@@ -5,5 +5,11 @@
     <color name="colorAccent">#Fb7299</color>
     <color name="colortaterl">#Fb7299</color>
     <color name="recommend">#E8E8E8</color>
-
+    <!--scan code -->
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#00000000</color>
+    <color name="cl_80c469">#80c469</color>
 </resources>

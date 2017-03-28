@@ -27,6 +27,8 @@ import atguigu.blibli.activity.OriginalActivity;
 import atguigu.blibli.activity.RegionActivity;
 import atguigu.blibli.activity.ShoppingActivity;
 import atguigu.blibli.activity.TalkActivity;
+import atguigu.blibli.activity.WebViewActivity;
+import atguigu.blibli.adapter.LiveAdapter;
 import atguigu.blibli.bean.WaterBean;
 import atguigu.blibli.utils.Contants;
 import atguigu.blibli.utils.DensityUtil;
@@ -133,12 +135,12 @@ public class FindFragment extends BaseFragment {
 
                 }
             });
-           idFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
-               @Override
-               public boolean onTagClick(View view, int position, FlowLayout parent) {
-                   return true;
-               }
-           });
+            idFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+                @Override
+                public boolean onTagClick(View view, int position, FlowLayout parent) {
+                    return true;
+                }
+            });
 
         }
     }
@@ -169,12 +171,12 @@ public class FindFragment extends BaseFragment {
                         Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
                     }
                 });
-                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
+                searchFragment.show(getFragmentManager(), SearchFragment.TAG);
 
                 break;
             case R.id.iv_scan:
-                 intent = new Intent(mContext, CaptureActivity.class);
-                startActivityForResult(intent,0);
+                intent = new Intent(mContext, CaptureActivity.class);
+                startActivityForResult(intent, 0);
                 break;
             case R.id.id_flowlayout:
                 break;
@@ -186,7 +188,7 @@ public class FindFragment extends BaseFragment {
                     svView.setLayoutParams(layoutParams);
                     tvLoadMore.setText("收起");
                     Drawable img = getResources().getDrawable(R.drawable.ic_arrow_up);
-                        // 调用setCompoundDrawables时，必须调用Drawable.setBounds()方法,否则图片不显示
+                    // 调用setCompoundDrawables时，必须调用Drawable.setBounds()方法,否则图片不显示
                     img.setBounds(0, 0, img.getMinimumWidth(), img.getMinimumHeight());
                     tvLoadMore.setCompoundDrawables(img, null, null, null); //设置左图标
                     isOpen = true;
@@ -211,7 +213,7 @@ public class FindFragment extends BaseFragment {
                 Toast.makeText(mContext, "55555555555", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_topic:
-                 intent = new Intent(mContext, TalkActivity.class);
+                intent = new Intent(mContext, TalkActivity.class);
                 mContext.startActivity(intent);
 
                 break;
@@ -221,17 +223,17 @@ public class FindFragment extends BaseFragment {
             case R.id.min:
                 break;
             case R.id.tv_ranking:
-                 intent = new Intent(mContext,OriginalActivity.class);
+                intent = new Intent(mContext, OriginalActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.whole:
-                intent = new Intent(mContext,RegionActivity.class);
+                intent = new Intent(mContext, RegionActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.game:
                 break;
             case R.id.around:
-                intent = new Intent(mContext,ShoppingActivity.class);
+                intent = new Intent(mContext, ShoppingActivity.class);
                 mContext.startActivity(intent);
                 break;
         }
@@ -240,11 +242,16 @@ public class FindFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode ==RESULT_OK&&requestCode==0) {
+        if (resultCode == RESULT_OK && requestCode == 0) {
             Bundle mBundle = data.getExtras();
 //            if(ValidateUtils.isNotNullobj(mBundle)) {
-                String Scanrelut = mBundle.getString("result");
-                Toast.makeText(mContext, "扫描二维码的结果是"+Scanrelut, Toast.LENGTH_SHORT).show();
+            String Scanrelut = mBundle.getString("result");
+
+            Intent intent = new Intent(mContext, WebViewActivity.class);
+            intent.putExtra(LiveAdapter.LINK,intent);
+            startActivity(intent);
+
+            Toast.makeText(mContext, "扫描二维码的结果是" + Scanrelut, Toast.LENGTH_SHORT).show();
 //            }
 
         }

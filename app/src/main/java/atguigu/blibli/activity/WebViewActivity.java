@@ -65,6 +65,8 @@ public class WebViewActivity extends AppCompatActivity {
         webViewBean = (WebViewBean) getIntent().getSerializableExtra(LiveAdapter.LINK);
         title = webViewBean.getTitle();
         link = webViewBean.getLink();
+
+
         setSupportActionBar(toolbar);
 
         //设置totel的返回箭头
@@ -150,6 +152,7 @@ public class WebViewActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
         intent.putExtra(Intent.EXTRA_TEXT, "来自「哔哩哔哩」的分享:" + link);
         startActivity(Intent.createChooser(intent, title));
+
     }
 
     @Override

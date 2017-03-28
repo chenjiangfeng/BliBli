@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ImageView iv;
     private ImageView iv_search;
+
     public static final String URL="URL";
 
     @Override
@@ -167,4 +168,5 @@ public class MainActivity extends AppCompatActivity {
         });
         searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
     }
+
 }

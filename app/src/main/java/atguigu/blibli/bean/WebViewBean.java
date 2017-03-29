@@ -18,6 +18,7 @@ public class WebViewBean  implements Serializable{
     private String img;
     private String remark;
     private String link;
+    private Boolean ischeck = true;
 
     public String getTitle() {
         return title;

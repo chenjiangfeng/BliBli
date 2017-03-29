@@ -12,15 +12,14 @@
      
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
-        <!--读取二维码的时的权限-->
+    <!-- 读取二维码的时的权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
-
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".view.MyApplication"
@@ -49,8 +48,9 @@
             android:name=".view.DanmkuVideoActivity"
             android:configChanges="orientation|keyboard|screenSize|keyboardHidden" />
         <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.ShoppingActivity"></activity>
-        <activity android:name="erweima.activity.CaptureActivity"></activity>
+        <activity android:name=".activity.ShoppingActivity" />
+        <activity android:name="erweima.activity.CaptureActivity" />
+        <activity android:name=".activity.GoodsInfoActivity"></activity>
     </application>
 
 </manifest>

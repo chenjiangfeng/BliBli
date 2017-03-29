@@ -46,4 +46,8 @@ public class Contants {
 
     //搜索的尾
     public static String SEACHER_BUTTON_URL = "&mobi_app=android&platform=android&pn=1&ps=20";
+
+        //购物车
+    public static String LIST_URL = "http://bmall.bilibili.com/api/product/list.do?pn=1&ps=6";
+
 }

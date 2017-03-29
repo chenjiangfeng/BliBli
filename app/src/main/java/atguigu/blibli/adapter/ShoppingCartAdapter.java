@@ -168,6 +168,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 } else {
                     number++;
                     showTotalPrice();
+
                 }
             }
             if (datas.size() == number) {

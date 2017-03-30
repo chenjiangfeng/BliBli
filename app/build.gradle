@@ -6,6 +6,17 @@ android {
 
     defaultConfig {
         applicationId "atguigu.blibli"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a','x86', 'x86_64', 'mips', 'mips64'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "d8ef20374511c7da2016c859", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
@@ -49,12 +60,24 @@ dependencies {
     compile 'com.alibaba:fastjson:1.2.29'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.zhy:flowlayout-lib:1.0.3'//流失布局
+    compile 'com.zhy:flowlayout-lib:1.0.3'
+    //流失布局
     compile 'com.android.support:cardview-v7:25.1.0'
-    compile 'com.wenwenwen888:searchbox:1.0.0'//BiBi的搜索框
-    compile 'com.shuyu:GSYVideoPlayer:1.6.1'//视频播放
-    compile 'com.github.ctiao:dfm:0.7.3'//视频播放
-    compile files('libs/zxing.jar')//二维码
-    compile'org.greenrobot:greendao:3.0.1'//数据库
-    compile'org.greenrobot:greendao-generator:3.0.0'//数据库
+    compile 'com.wenwenwen888:searchbox:1.0.0'
+    //BiBi的搜索框
+    compile 'com.shuyu:GSYVideoPlayer:1.6.1'
+    //视频播放
+    compile 'com.github.ctiao:dfm:0.7.3'
+    //视频播放
+    compile files('libs/zxing.jar')
+    //二维码
+    compile 'org.greenrobot:greendao:3.0.1'
+    //数据库
+    compile 'org.greenrobot:greendao-generator:3.0.0'
+    //数据库
+    compile files('libs/alipaysecsdk.jar')
+    compile files('libs/alipaysdk.jar')
+    compile files('libs/alipayutdid.jar')
+    compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
 }

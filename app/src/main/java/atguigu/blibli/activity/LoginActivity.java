@@ -13,10 +13,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anye.greendao.gen.UserDao;
+
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import atguigu.blibli.R;
+import atguigu.blibli.user.User;
+import atguigu.blibli.view.MyApplication;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -47,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
     ImageView ivJiantou;
     @InjectView(R.id.forget)
     TextView forget;
+    private String phone;
+    private String passerworld;
+    private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,10 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.inject(this);
         etPhone.setSelection(etPhone.length());
         initListener();
+        phone = etPhone.getText().toString().trim();
+        passerworld = etPassworld.getText().toString().trim();
+        userDao = MyApplication.getInstance().getDaoSession().getUserDao();
+
     }
 
     private void initListener() {
@@ -118,17 +130,42 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.et_passworld:
                 break;
             case R.id.bt_register:
-                Toast.makeText(LoginActivity.this, "注册页面还没有写", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.bt_login:
-                String phone = etPhone.getText().toString().trim();
-                String passerworld = etPassworld.getText().toString().trim();
+
                 if (TextUtils.isEmpty(phone)) {
-                    Toast.makeText(LoginActivity.this, "账号不能为空", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(LoginActivity.this, "账号不能为空,请输入账号", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(passerworld)) {
-                    Toast.makeText(LoginActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "密码不能为空,请输入密码", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<User> users = userDao.loadAll();
+                for (int i = 0; i < users.size(); i++) {
+                    String name = users.get(i).getName();
+                    if (phone == name) {
+                        Toast.makeText(LoginActivity.this, "此账号已注册,请重新注册", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+               }
+                //注册
+
+                User u = new User(null,null,"",passerworld,phone,true);
+                userDao.insert(u);
+
+
+
+
+                break;
+            case R.id.bt_login:
+
+                if (TextUtils.isEmpty(phone)) {
+
+                    Toast.makeText(LoginActivity.this, "账号不能为空,请输入账号", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(passerworld)) {
+                    Toast.makeText(LoginActivity.this, "密码不能为空,请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

@@ -30,6 +30,7 @@ import atguigu.blibli.activity.TalkActivity;
 import atguigu.blibli.activity.WebViewActivity;
 import atguigu.blibli.adapter.LiveAdapter;
 import atguigu.blibli.bean.WaterBean;
+import atguigu.blibli.bean.WebViewBean;
 import atguigu.blibli.utils.Contants;
 import atguigu.blibli.utils.DensityUtil;
 import butterknife.ButterKnife;
@@ -246,9 +247,12 @@ public class FindFragment extends BaseFragment {
             Bundle mBundle = data.getExtras();
 //            if(ValidateUtils.isNotNullobj(mBundle)) {
             String Scanrelut = mBundle.getString("result");
+            WebViewBean bean = new WebViewBean();
+            bean.setTitle("二维码");
+            bean.setLink(Scanrelut);
 
             Intent intent = new Intent(mContext, WebViewActivity.class);
-            intent.putExtra(LiveAdapter.LINK,intent);
+            intent.putExtra(LiveAdapter.LINK,bean);
             startActivity(intent);
 
             Toast.makeText(mContext, "扫描二维码的结果是" + Scanrelut, Toast.LENGTH_SHORT).show();

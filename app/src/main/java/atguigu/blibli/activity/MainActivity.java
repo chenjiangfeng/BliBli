@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.wyt.searchbox.SearchFragment;
@@ -44,13 +45,18 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv;
     private ImageView iv_search;
 
-    public static final String URL="URL";
+    public static final String URL = "URL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         ButterKnife.inject(this);
+//        //透明状态栏  沉浸式状态栏加入的代码
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //透明导航栏
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
         iv_search = (ImageView) findViewById(R.id.iv_search);
         iv = (ImageView) findViewById(R.id.iv_select);
         dlMain = (DrawerLayout) findViewById(R.id.dl_main);
@@ -110,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         //设置适配器
 
         adapter = new MainAdapter(getSupportFragmentManager(), fragments);
-
+        //让fragment有缓存
         viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -158,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
             public void OnSearchClick(String keyword) {
 
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                intent.putExtra("URL", Contants.SEACHER_TOP_URL+keyword+Contants.SEACHER_BUTTON_URL);
-                intent.putExtra("KEYWORD",keyword);
+                intent.putExtra("URL", Contants.SEACHER_TOP_URL + keyword + Contants.SEACHER_BUTTON_URL);
+                intent.putExtra("KEYWORD", keyword);
 
 
                 startActivity(intent);
@@ -168,5 +174,4 @@ public class MainActivity extends AppCompatActivity {
         });
         searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
     }
-
 }

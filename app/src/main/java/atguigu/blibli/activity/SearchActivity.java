@@ -21,9 +21,6 @@ import atguigu.blibli.adapter.SeacherAdpter;
 import atguigu.blibli.bean.SeacherBean;
 import atguigu.blibli.fragment.BaseFragment;
 import atguigu.blibli.fragment.ComprehensiveAdapter;
-import atguigu.blibli.fragment.DramaFragment;
-import atguigu.blibli.fragment.MasterFragment;
-import atguigu.blibli.fragment.MoviesFragment;
 import atguigu.blibli.utils.GetDataFromNet;
 import atguigu.blibli.utils.LoadNetHttp;
 import butterknife.ButterKnife;
@@ -76,9 +73,14 @@ public class SearchActivity extends AppCompatActivity {
     private void initData(SeacherBean.DataBean.ItemsBean items) {
         lists = new ArrayList<>();
         lists.add(new ComprehensiveAdapter(items));
-        lists.add(new DramaFragment(items));
-        lists.add(new MasterFragment(items));
-        lists.add(new MoviesFragment(items));
+        lists.add(new ComprehensiveAdapter(items));
+        lists.add(new ComprehensiveAdapter(items));
+        lists.add(new ComprehensiveAdapter(items));
+
+
+//        lists.add(new DramaFragment(items));
+//        lists.add(new MasterFragment(items));
+//        lists.add(new MoviesFragment(items));
     }
 
     private void getDataFromeNet() {

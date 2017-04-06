@@ -28,7 +28,10 @@ public class LiveFragment extends BaseFragment {
 
     @Override
     public View initView() {
-        View view = View.inflate(mContext, R.layout.fragment_live, null);
+
+        View view = null;
+
+        view = View.inflate(mContext, R.layout.fragment_live, null);
         ButterKnife.inject(this, view);
         return view;
     }
@@ -37,7 +40,7 @@ public class LiveFragment extends BaseFragment {
     public void initData() {
         super.initData();
         //联网请求数据
-      getDataFromNet();
+        getDataFromNet();
     }
 
     private void getDataFromNet() {
@@ -48,7 +51,7 @@ public class LiveFragment extends BaseFragment {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Toast.makeText(mContext,""+e,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "" + e, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -61,16 +64,16 @@ public class LiveFragment extends BaseFragment {
     }
 
     private void processData(String json) {
-        if(!TextUtils.isEmpty(json)) {
+        if (!TextUtils.isEmpty(json)) {
 
             LiveBean bean = JSON.parseObject(json, LiveBean.class);
             LiveBean.DataBean data = bean.getData();
-           if(data!=null) {
-               //设置适配器
-               LiveAdapter adapter = new LiveAdapter(mContext,data);
+            if (data != null) {
+                //设置适配器
+                LiveAdapter adapter = new LiveAdapter(mContext, data);
 
-               fragmentLive.setAdapter(adapter);
-           }
+                fragmentLive.setAdapter(adapter);
+            }
 
 
             //布局管理器
@@ -78,9 +81,10 @@ public class LiveFragment extends BaseFragment {
 //            fragmentLive.setLayoutManager(manager);
 
 
-            fragmentLive.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
+            fragmentLive.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         }
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

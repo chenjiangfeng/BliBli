@@ -13,12 +13,16 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
        >
+        <!--沉浸式状态栏加入 android:clipToPadding="true"
+            android:fitsSystemWindows="true"-->
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
+
                 android:id="@+id/toolbar"
                 app:theme="@style/AppThemeone"
                 android:layout_width="match_parent"
@@ -65,7 +69,9 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="未登录"/>
+                        android:text="未登录"
+                        android:id="@+id/textView" />
+
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"

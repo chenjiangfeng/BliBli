@@ -23,8 +23,10 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.List;
 
 import atguigu.blibli.R;
+import atguigu.blibli.activity.MainActivity;
 import atguigu.blibli.activity.OriginalActivity;
 import atguigu.blibli.activity.RegionActivity;
+import atguigu.blibli.activity.SearchActivity;
 import atguigu.blibli.activity.ShoppingActivity;
 import atguigu.blibli.activity.TalkActivity;
 import atguigu.blibli.activity.WebViewActivity;
@@ -139,6 +141,12 @@ public class FindFragment extends BaseFragment {
             idFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
                 @Override
                 public boolean onTagClick(View view, int position, FlowLayout parent) {
+                    String keyword = list.get(position).getKeyword();
+                    MainActivity ma = (MainActivity) mContext;
+                    Intent intent = new Intent(mContext, SearchActivity.class);
+                    intent.putExtra(ma.URL,Contants.SEACHER_TOP_URL +keyword+ Contants.SEACHER_BUTTON_URL);
+                    intent.putExtra("KEYWORD",keyword);
+                    mContext.startActivity(intent);
                     return true;
                 }
             });

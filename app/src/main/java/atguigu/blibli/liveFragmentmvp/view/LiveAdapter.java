@@ -1,4 +1,4 @@
-package atguigu.blibli.adapter;
+package atguigu.blibli.liveFragmentmvp.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import java.util.List;
 
 import atguigu.blibli.R;
 import atguigu.blibli.activity.WebViewActivity;
+import atguigu.blibli.adapter.DrawaerAdapter;
 import atguigu.blibli.bean.LiveBean;
 import atguigu.blibli.bean.WebViewBean;
 import atguigu.blibli.utils.MyGridView;
@@ -120,8 +121,8 @@ public class LiveAdapter extends RecyclerView.Adapter {
         public void setData(final List<LiveBean.DataBean.BannerBean> beanbanner) {
 
             List<String> images = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                images.add(beanbanner.get(0).getImg());
+            for (int i = 0; i < beanbanner.size(); i++) {
+                images.add(beanbanner.get(i).getImg());
             }
             banner.setImages(images)
                     .setImageLoader(new ImageLoader() {

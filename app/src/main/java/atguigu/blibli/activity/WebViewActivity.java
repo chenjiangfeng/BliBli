@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import atguigu.blibli.R;
-import atguigu.blibli.adapter.LiveAdapter;
+import atguigu.blibli.liveFragmentmvp.view.LiveAdapter;
 import atguigu.blibli.bean.WebViewBean;
 import atguigu.blibli.utils.ClipboardUtil;
 import butterknife.ButterKnife;

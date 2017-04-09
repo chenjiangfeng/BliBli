@@ -15,7 +15,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import java.util.List;
 
 import atguigu.blibli.R;
-import atguigu.blibli.adapter.LiveAdapter;
+import atguigu.blibli.liveFragmentmvp.view.LiveAdapter;
 import atguigu.blibli.adapter.TalkMianActivity;
 import atguigu.blibli.bean.CenterBean;
 import atguigu.blibli.bean.WebViewBean;

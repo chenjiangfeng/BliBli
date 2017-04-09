@@ -73,11 +73,13 @@
                         android:id="@+id/textView" />
 
                     <ImageView
+                        android:id="@+id/iv_game"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_margin="10dp"
                         android:src="@drawable/ic_menu_top_game_center"/>
                     <ImageView
+                        android:id="@+id/iv_download"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_margin="10dp"

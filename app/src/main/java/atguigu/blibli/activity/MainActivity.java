@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
@@ -23,12 +24,13 @@ import java.util.List;
 
 import atguigu.blibli.R;
 import atguigu.blibli.adapter.MainAdapter;
+import atguigu.blibli.download.DownLoadMainActivity;
 import atguigu.blibli.fragment.BaseFragment;
 import atguigu.blibli.fragment.FindFragment;
-import atguigu.blibli.fragment.LiveFragment;
 import atguigu.blibli.fragment.PartitionFragment;
 import atguigu.blibli.fragment.RecommendFragment;
 import atguigu.blibli.fragment.RunFragment;
+import atguigu.blibli.liveFragmentmvp.view.LiveFragment;
 import atguigu.blibli.utils.Contants;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ImageView iv;
     private ImageView iv_search;
+    private ImageView iv_download;
 
     public static final String URL = "URL";
 
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(tablayout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         navigationView = (NavigationView) findViewById(R.id.navigation_heade);
+        ImageView viewById = (ImageView) findViewById(R.id.iv_download);
 
         View headerView = navigationView.getHeaderView(0);
 
@@ -156,22 +160,39 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.iv_search)
-    public void onClick() {
-        SearchFragment searchFragment = SearchFragment.newInstance();
-        searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
-            @Override
-            public void OnSearchClick(String keyword) {
+    @OnClick({R.id.iv_download, R.id.iv_search,R.id.iv_game})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_download:
 
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                intent.putExtra("URL", Contants.SEACHER_TOP_URL + keyword + Contants.SEACHER_BUTTON_URL);
-                intent.putExtra("KEYWORD", keyword);
-
-
+                Intent intent = new Intent(this, DownLoadMainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.iv_search:
+                SearchFragment searchFragment = SearchFragment.newInstance();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
 
-            }
-        });
-        searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
+                        Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                        intent.putExtra("URL", Contants.SEACHER_TOP_URL + keyword + Contants.SEACHER_BUTTON_URL);
+                        intent.putExtra("KEYWORD", keyword);
+
+
+                        startActivity(intent);
+
+                    }
+                });
+                searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
+                break;
+            case R.id.iv_game:
+
+                Intent intentone = new Intent(MainActivity.this,BluetoothActivity.class);
+                startActivity(intentone);
+                Toast.makeText(MainActivity.this, "youxia", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
+
+
 }

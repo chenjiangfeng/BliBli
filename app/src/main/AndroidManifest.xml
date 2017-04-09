@@ -63,6 +63,18 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
+    <!-- 蓝牙 已适配Android6.0 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+
     <application
         android:name=".view.MyApplication"
         android:allowBackup="true"
@@ -103,7 +115,10 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-        <activity android:name=".viewmvp.ViewMvp"></activity>
+        <activity android:name=".download.DownLoadMainActivity" />
+        <activity android:name=".download.DownloadActivity" />
+        <activity android:name=".download.DownloadListActivity" />
+        <activity android:name=".activity.BluetoothActivity"></activity>
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@ import atguigu.blibli.activity.SearchActivity;
 import atguigu.blibli.activity.ShoppingActivity;
 import atguigu.blibli.activity.TalkActivity;
 import atguigu.blibli.activity.WebViewActivity;
-import atguigu.blibli.adapter.LiveAdapter;
+import atguigu.blibli.liveFragmentmvp.view.LiveAdapter;
 import atguigu.blibli.bean.WaterBean;
 import atguigu.blibli.bean.WebViewBean;
 import atguigu.blibli.utils.Contants;

@@ -23,6 +23,7 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.List;
 
 import atguigu.blibli.R;
+import atguigu.blibli.activity.BaiDuActivity;
 import atguigu.blibli.activity.MainActivity;
 import atguigu.blibli.activity.OriginalActivity;
 import atguigu.blibli.activity.RegionActivity;
@@ -30,9 +31,9 @@ import atguigu.blibli.activity.SearchActivity;
 import atguigu.blibli.activity.ShoppingActivity;
 import atguigu.blibli.activity.TalkActivity;
 import atguigu.blibli.activity.WebViewActivity;
-import atguigu.blibli.liveFragmentmvp.view.LiveAdapter;
 import atguigu.blibli.bean.WaterBean;
 import atguigu.blibli.bean.WebViewBean;
+import atguigu.blibli.liveFragmentmvp.view.LiveAdapter;
 import atguigu.blibli.utils.Contants;
 import atguigu.blibli.utils.DensityUtil;
 import butterknife.ButterKnife;
@@ -213,13 +214,14 @@ public class FindFragment extends BaseFragment {
                 }
                 break;
             case R.id.textView1:
-                Toast.makeText(mContext, "55555555555", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "新區", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.textView2:
-                Toast.makeText(mContext, "55555555555", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "11", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_group:
-                Toast.makeText(mContext, "55555555555", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext,BaiDuActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.tv_topic:
                 intent = new Intent(mContext, TalkActivity.class);
@@ -227,7 +229,7 @@ public class FindFragment extends BaseFragment {
 
                 break;
             case R.id.tv_activity:
-                Toast.makeText(mContext, "55555555555", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "33", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.min:
                 break;

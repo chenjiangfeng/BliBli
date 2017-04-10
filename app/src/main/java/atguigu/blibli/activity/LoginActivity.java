@@ -16,12 +16,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.anye.greendao.gen.UserLoginDao;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import atguigu.blibli.R;
 import atguigu.blibli.user.UserLogin;
+import atguigu.blibli.utils.WorksSizeCheckUtil;
 import atguigu.blibli.view.MyApplication;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -65,25 +69,41 @@ public class LoginActivity extends AppCompatActivity {
 
         ButterKnife.inject(this);
         etPhone.setSelection(etPhone.length());
-
+        initData();
         initListener();
         userDao = MyApplication.getInstance().getDaoSession().getUserLoginDao();
     }
 
+    private void initData() {
+        WorksSizeCheckUtil.textChangeListener textChangeListener = new WorksSizeCheckUtil.textChangeListener(btLogin);
+
+            //2.把所有要监听的edittext都添加进去
+        textChangeListener.addAllEditText(etPhone, etPassworld);
+
+            //3.接口回调 在这里拿到boolean变量 根据isHasContent的值决定 tv 应该设置什么颜色
+        WorksSizeCheckUtil.setChangeListener(new IEditTextChangeListener() {
+            @Override
+            public void textChange(boolean isHasContent) {
+                if (isHasContent) {
+                    btLogin.setEnabled(true);
+                } else {
+                    btLogin.setEnabled(false);
+                }
+            }
+        });
+    }
+
     private void initListener() {
+
         etPhone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     ivLeftLogin.setImageResource(R.drawable.ic_22);
                     ivRightLogin.setImageResource(R.drawable.ic_33);
-                    new Timer().schedule(new TimerTask()
+                    new Timer().schedule(new TimerTask() {
 
-                                         {
-
-                                             public void run()
-
-                                             {
+                                             public void run() {
 
                                                  InputMethodManager inputManager =
 
@@ -115,8 +135,8 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.forget:
                 LayoutInflater inflater = LayoutInflater.from(LoginActivity.this);//提示
                 View viewdialog = inflater.inflate(R.layout.dialog_item, null);
-               zhang = (EditText) viewdialog.findViewById(R.id.et_zhanghao);
-                 mi = (EditText) viewdialog.findViewById(R.id.et_mima);
+                zhang = (EditText) viewdialog.findViewById(R.id.et_zhanghao);
+                mi = (EditText) viewdialog.findViewById(R.id.et_mima);
                 new AlertDialog.Builder(LoginActivity.this)
                         .setTitle("修改密码")
                         .setMessage("新密码").setIcon(
